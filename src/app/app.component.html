@@ -1,0 +1,116 @@
+<div class="container">
+  <div class="card w-75 mb-3">
+    <div class="card-body">
+      <h4 class="card-title">Range Slider Example</h4>
+      <div class="card-body">
+        <h5> <strong>Sessions</strong></h5>
+        <ng5-slider class="slider" [(value)]="session" [options]="sessionOp"></ng5-slider>
+        <p class="inputvalue">Sessions: <input type="number" [(ngModel)]="session" ></p>
+
+        <p class="resultfee">Session Fee:  <strong>{{session * session_price | number}}</strong>
+      </div>
+
+      <div class="card-body">
+        <h5><strong>Over Night Session</strong></h5>
+        <ng5-slider class="slider" [(value)]="overnightSession" [options]="overnightSessionOp"></ng5-slider>
+        <p class="inputvalue">Overnight Session : <input type="number" [(ngModel)]="overnightSession"></p>
+        <p class="resultfee">Overnight Session Fee:  <strong>{{overnightSession * overnightSession_price | number}}</strong>
+
+      </div>
+
+      <div class="card-body">
+        <h5><strong>Travel Time</strong></h5>
+        <ng5-slider class="slider" [(value)]="travelTime" [options]="travelTimeOp"></ng5-slider>
+        <p class="inputvalue">Travel Time: <input type="number" [(ngModel)]="travelTime"></p>
+        <p class="resultfee">Travel Time Fee:  <strong>{{travelTime * travelTime_price | number}}</strong>
+
+      </div>
+
+      <div class="card-body">
+        <h5><strong>Milege</strong></h5>
+        <ng5-slider class="slider" [(value)]="milege" [options]="milegeOp"></ng5-slider>
+        <p class="inputvalue">Mileage: <input type="number" [(ngModel)]="milege"></p>
+        <p class="resultfee">Mileage Fee:  <strong>{{milege * Mileage_price | number}}</strong>
+
+      </div>
+
+      <div class="card-body">
+        <h5><strong>Holidays</strong></h5>
+        <ng5-slider class="slider" [(value)]="holidays" [options]="holidaysOp"></ng5-slider>
+        <p class="inputvalue">Holiday: <input type="number" [(ngModel)]="holidays"></p>
+        <p class="resultfee">Holiday Premium Fee:  <strong>{{holidays * holidayPremium_price | number}}</strong>
+    </div>
+
+  
+
+
+  <div class="card-body">
+      <h5><strong>Additional Pets </strong></h5>
+      <ng5-slider class="slider" [(value)]="additionalPets" [options]="AdditionalpetOp"></ng5-slider>
+      <p class="inputvalue">Additional Pets: <input type="number" [(ngModel)]="additionalPets"></p>
+      <p class="resultfee">Additional Pets change:  <strong>{{additionalPets * additionalPets_price }}</strong>
+  </div>
+
+
+
+
+     <h2>Total Fee : {{(session * session_price)+(overnightSession * overnightSession_price)+(travelTime * travelTime_price) +(milege * Mileage_price)+(holidays * holidayPremium_price) +(additionalPets * additionalPets_price) | number }}</h2>
+
+     <div class="discounts">
+<h4>Discounts</h4>
+      <div class="card-body-radio">
+          <h5 style="padding-bottom:10px"><strong>User Joining (Discount %)</strong> </h5>
+        <div class="radio_select">
+          <input type="radio" name="discount" id="first" value="first" (change)="entrylevelDiscount('first', $event)">
+        <label for="first">1st time client discount</label>
+        </div>
+
+        <div class="radio_select">
+            <input type="radio" name="discount" id="senior" value="senior" (change)="entrylevelDiscount('senior', $event)">
+          <label for="senior">Senior</label>
+          </div>
+
+          
+        <div class="radio_select">
+            <input type="radio" name="discount" id="repeat" value="repeat" (change)="entrylevelDiscount('repeat', $event)">
+          <label for="repeat">Repeat</label>
+          </div>
+  
+          <div class="radio_select">
+              <input type="radio" name="discount" id="veteran" value="veteran" (change)="entrylevelDiscount('veteran', $event)">
+            <label for="veteran">Veteran</label>
+            </div>
+            <div class="card-body-discount">
+                <p class="resultfee">  Discount Fee:  <strong>{{user_discount | number}}</strong>
+            </div>
+          </div>
+          
+        
+      
+<div class="card-body-discount">
+    <p class="resultfee"> Mileage Discount : <strong>-{{user_discount * (milege * Mileage_price) | number }}</strong>
+
+</div>
+<div class="card-body-discount">
+    <p class="resultfee"> Holiday discount :  <strong>-{{ holidays * holidayDiscount_price | number}}</strong>
+
+</div>
+<div class="card-body-total" style="padding-top:43px;">
+  
+      <h2>Total discount : -{{ (holidays * holidayDiscount_price)+ user_discount * (milege * Mileage_price) | number}}  </h2>
+</div>
+
+<div class="card-body-total">
+   
+      <h2>Grand Total : {{((session * session_price)+(overnightSession * overnightSession_price)+(travelTime * travelTime_price) +(milege * Mileage_price)+(holidays * holidayPremium_price) +(additionalPets * additionalPets_price))-((holidays * holidayDiscount_price)+ user_discount * (milege * Mileage_price)) | number}}  </h2>
+</div>
+    </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<!-- <ng5-slider [(value)]="value" [options]="options"></ng5-slider> -->
